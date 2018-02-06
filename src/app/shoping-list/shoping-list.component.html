@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col-xs-10">
     <app-edit
-    (ingredientAdded)="onIngredientAdded($event)"></app-edit>
+      (ingredientAdded)="onIngredientAdded($event)"></app-edit>
     <hr>
     <ul class="list-group">
-      <a class="list-group-item"
-      *ngFor="let item of ingredients">
-        {{item.name}} ({{item.amount}})
-      </a>
+      <p class="list-group-item"
+         *ngFor="let item of ingredients"
+         [ngClass]="item.checked ? 'crossed': ''"
+         (click)="item.checked = !item.checked"
+         appHighLight>
+        {{item.name}} <span *ngIf="item.amount">({{item.amount}})</span>
+      </p>
     </ul>
   </div>
 </div>

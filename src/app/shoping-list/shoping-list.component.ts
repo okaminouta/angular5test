@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ingredient} from '../shared/ingredient.module';
 
 @Component({
@@ -7,16 +7,21 @@ import {Ingredient} from '../shared/ingredient.module';
   styleUrls: ['./shoping-list.component.css']
 })
 export class ShopingListComponent implements OnInit {
-ingredients: Ingredient[] = [];
+  ingredients: Ingredient[] = [];
 
   onIngredientAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-
+    console.log(this.ingredients);
+    localStorage.setItem('shopingList', JSON.stringify(this.ingredients));
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    if (localStorage.getItem('shopingList')) {
+      this.ingredients = (JSON.parse(localStorage.getItem('shopingList')));
+    }
   }
 
 }

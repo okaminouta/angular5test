@@ -8,11 +8,24 @@ import {Ingredient} from '../../shared/ingredient.module';
 })
 export class EditComponent implements OnInit {
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
-  nameInput: string;
-  amountInput: string;
-  addItem(name: HTMLInputElement, amount: HTMLInputElement) {
-    const newIngredient = new Ingredient(name.value, amount.value);
-    this.ingredientAdded.emit(newIngredient);
+  shopingItem = {
+    name: null,
+    amount: null,
+    checked: false
+  };
+
+
+  addItem() {
+    if (this.shopingItem.name === null ||
+      this.shopingItem.name === '') {
+      console.log('enter Name');
+    } else {
+      const newIngredient = new Ingredient(this.shopingItem.name,
+        this.shopingItem.amount);
+      this.ingredientAdded.emit(newIngredient);
+      this.shopingItem.name = null;
+      this.shopingItem.amount = null;
+    }
   }
 
   constructor() {
