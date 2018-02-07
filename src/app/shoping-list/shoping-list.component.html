@@ -5,11 +5,16 @@
     <hr>
     <ul class="list-group">
       <p class="list-group-item"
-         *ngFor="let item of ingredients"
+         *ngFor="let item of ingredients; let i = index"
          [ngClass]="item.checked ? 'crossed': ''"
-         (click)="item.checked = !item.checked"
+         (click)="crossItem(i)"
          appHighLight>
-        {{item.name}} <span *ngIf="item.amount">({{item.amount}})</span>
+        {{item.name}}
+        <span *ngIf="item.amount">({{item.amount}})</span>
+        <span
+          (click)="deleteItem(i)"
+          class="pull-right"
+        style="cursor: pointer">X</span>
       </p>
     </ul>
   </div>

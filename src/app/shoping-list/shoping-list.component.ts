@@ -12,10 +12,24 @@ export class ShopingListComponent implements OnInit {
   onIngredientAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     console.log(this.ingredients);
-    localStorage.setItem('shopingList', JSON.stringify(this.ingredients));
+    this.localstorageSetItems();
   }
 
   constructor() {
+  }
+
+  crossItem(index) {
+    this.ingredients[index].checked = !this.ingredients[index].checked;
+    this.localstorageSetItems();
+  }
+
+  deleteItem(index) {
+    this.ingredients.splice(index, 1);
+    this.localstorageSetItems();
+  }
+
+  localstorageSetItems() {
+    localStorage.setItem('shopingList', JSON.stringify(this.ingredients));
   }
 
   ngOnInit() {

@@ -21,7 +21,7 @@ export class EditComponent implements OnInit {
       console.log('enter Name');
     } else {
       const newIngredient = new Ingredient(this.shopingItem.name,
-        this.shopingItem.amount);
+        this.shopingItem.amount, this.shopingItem.checked);
       this.ingredientAdded.emit(newIngredient);
       this.shopingItem.name = null;
       this.shopingItem.amount = null;
