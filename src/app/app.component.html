@@ -6,6 +6,9 @@
       <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
       <app-shoping-list *ngIf="loadedFeature === 'shoping'"></app-shoping-list>
     </div>
+    <div *appUnless="showButton">
+      <button>123</button>
+    </div>
   </div>
 </div>
 
