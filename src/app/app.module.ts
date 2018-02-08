@@ -14,6 +14,7 @@ import {BasicHighLightDirective} from './directives/hilight/hilight.directive';
 import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { NewHighLightDirective } from './directives/better-high-light/new-high-light.directive';
 import { UnlessDirective } from './directives/unless/unless.directive';
+import { DropdownDirective } from './directives/dropdown.directive';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UnlessDirective } from './directives/unless/unless.directive';
     BasicHighLightDirective,
     RecipeCreateComponent,
     NewHighLightDirective,
-    UnlessDirective
+    UnlessDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
