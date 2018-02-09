@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Ingredient} from '../shared/ingredient.module';
 import {TestOneService} from '../services/test-one.service';
+import {ShopingListService} from '../services/shoping-list.service';
 
 @Component({
   selector: 'app-shoping-list',
@@ -12,32 +13,26 @@ export class ShopingListComponent implements OnInit {
   ingredients: Ingredient[] = [];
 
   onIngredientAdded(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.c.l(this.ingredients, 'ingridients')
-    this.localstorageSetItems();
+    this.shopingListService.addIngredient(ingredient);
   }
 
-  constructor(private c: TestOneService ) {
+  constructor(private c: TestOneService, private shopingListService: ShopingListService) {
   }
 
   crossItem(index) {
     this.ingredients[index].checked = !this.ingredients[index].checked;
-    this.localstorageSetItems();
+    this.shopingListService.localstorageSetItems();
   }
 
   deleteItem(index) {
     this.ingredients.splice(index, 1);
-    this.localstorageSetItems();
+    this.shopingListService.localstorageSetItems();
   }
 
-  localstorageSetItems() {
-    localStorage.setItem('shopingList', JSON.stringify(this.ingredients));
-  }
+
 
   ngOnInit() {
-    if (localStorage.getItem('shopingList')) {
-      this.ingredients = (JSON.parse(localStorage.getItem('shopingList')));
-    }
+    this.ingredients = this.shopingListService.getIngredients();
   }
 
 }

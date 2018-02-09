@@ -15,6 +15,8 @@ import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.com
 import { NewHighLightDirective } from './directives/better-high-light/new-high-light.directive';
 import { UnlessDirective } from './directives/unless/unless.directive';
 import { DropdownDirective } from './directives/dropdown.directive';
+import {ShopingListService} from './services/shoping-list.service';
+import {TestOneService} from './services/test-one.service';
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ShopingListService, TestOneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

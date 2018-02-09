@@ -16,7 +16,7 @@
       <button class="btn btnn-primary dropdown-toggle">Manage
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a href="#">to shoping list</a></li>
+        <li (click)="toShopingList(recipe.ingredients)"><a href="#">To shoping list</a></li>
         <li><a href="#">edit</a></li>
         <li><a href="#">delete</a></li>
       </ul>
@@ -30,6 +30,13 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    ingridience
+    <ul class="list-group">
+      <p class="list-group-item"
+         *ngFor="let item of recipe.ingredients"
+         appHighLight>
+        {{item.name}}
+        <span *ngIf="item.amount" class="pull-right">({{item.amount}})</span>
+      </p>
+    </ul>
   </div>
 </div>
